@@ -1,1 +1,2 @@
 console.log("Hello, this is a TypeScript project using version 6.0.3 with CommonJS module system and targeting ESNext JavaScript.");
+console
