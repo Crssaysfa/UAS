@@ -38,18 +38,94 @@ const daftarMahasiswa: Mahasiswa[] = [
 // Penghitung id untuk data baru (pakai let karena nilainya berubah)
 let idBerikutnya: number = 6;
 
-// ============================================================
-// >>> BAGIAN ANGGOTA 2 (bagian 1): menu dan input angka
-// >>> Ganti baris [DIISI ANGGOTA 2 - BAGIAN 1] di bawah dengan kode dari file yang sesuai
-// ============================================================
-// [DIISI ANGGOTA 2 - BAGIAN 1]
-// ============================================================
-// >>> AKHIR BAGIAN ANGGOTA 2 (bagian 1)
-// ============================================================
+// FILE ANGGOTA 2 (sudah diperbaiki)
+// Bagian 1 ditempel menggantikan baris placeholder [DIISI ANGGOTA 2 - BAGIAN 1]
+// Bagian 2 ditempel menggantikan baris placeholder [DIISI ANGGOTA 2 - BAGIAN 2]
 
-// ============================================================
-// >>> BAGIAN ANGGOTA 3: fungsi perhitungan
-// ============================================================
+// ########## BAGIAN 1 (mulai) ##########
+// ---------- BLOK 4: FUNGSI MENU DAN INPUT ANGKA ----------
+// Fungsi tanpa parameter dan tanpa return (void): menampilkan menu utama
+function tampilkanMenu(): void {
+    console.log("");
+    console.log("===== PENILAIAN AKHIR MAHASISWA =====");
+    console.log("1. Tambah data");
+    console.log("2. Tampilkan semua data");
+    console.log("3. Lihat detail berdasarkan ID");
+    console.log("4. Ubah data");
+    console.log("5. Hapus data");
+    console.log("6. Cari data");
+    console.log("0. Keluar");
+    console.log("=====================================");
+}
+
+// Fungsi untuk meminta angka dari pengguna, diulang terus sampai inputnya benar
+// bulat = true artinya angka harus bulat (tanpa koma)
+function tanyaAngka(pertanyaan: string, min: number, max: number, bulat: boolean): number {
+    while (true) {
+        const jawaban: string = readlineSync.question(pertanyaan).trim(); // ambil jawaban
+        const angka: number = Number(jawaban);                           // ubah jadi angka
+
+        if (jawaban === "" || isNaN(angka)) {        // kosong atau bukan angka
+            console.log("Harus diisi angka ya.");
+        } else if (angka < min || angka > max) {     // di luar batas
+            console.log("Angka harus antara " + min + " sampai " + max + ".");
+        } else if (bulat && angka % 1 !== 0) {       // harus bulat tapi ada komanya
+            console.log("Angka harus bulat (tanpa koma).");
+        } else {
+            return angka;                            // input sudah benar
+        }
+    }
+}
+// ########## BAGIAN 1 (selesai) ##########
+
+// ########## BAGIAN 2 (mulai) ##########
+// ---------- PROGRAM UTAMA (MENU BERULANG) ----------
+// Percobaan Progress 2: menampilkan contoh data supaya fungsi di atas terlihat bekerja
+console.log("Contoh data pertama:");
+const mhsPertama: Mahasiswa | undefined = daftarMahasiswa[0];   // bisa undefined kalau array kosong
+if (mhsPertama !== undefined) {                                  // cek dulu supaya tidak error
+    tampilkanSatu(mhsPertama);
+} else {
+    console.log("Belum ada data mahasiswa.");
+}
+// hitungRataRata() dibuat oleh Anggota 3 (bagian fungsi perhitungan)
+console.log("Rata-rata nilai akhir semua data: " + hitungRataRata(daftarMahasiswa));
+
+let pilihan: string = "";    // tempat menyimpan pilihan menu
+
+// do...while: menu tampil dulu, diulang terus selama pilihan bukan 0
+do {
+    tampilkanMenu();
+    pilihan = readlineSync.question("Pilih menu (0-6): ").trim();
+
+    switch (pilihan) {
+        case "1":
+            console.log("Fitur tambah data belum dibuat (Progress 3).");
+            break;
+        case "2":
+            console.log("Fitur tampil semua data belum dibuat (Progress 4).");
+            break;
+        case "3":
+            console.log("Fitur detail data belum dibuat (Progress 4).");
+            break;
+        case "4":
+            console.log("Fitur ubah data belum dibuat (Progress 5).");
+            break;
+        case "5":
+            console.log("Fitur hapus data belum dibuat (Progress 5).");
+            break;
+        case "6":
+            console.log("Fitur cari data belum dibuat (Progress 6).");
+            break;
+        case "0":
+            console.log("Terima kasih, program selesai.");
+            break;
+        default:
+            console.log("Pilihan tidak valid, masukkan angka 0 sampai 6.");
+            break;
+    }
+} while (pilihan !== "0");
+// ########## BAGIAN 2 (selesai) ##########
 
 // Menghitung nilai akhir berdasarkan bobot tugas, UTS, dan UAS
 function nilaiAkhirMhs(mhs: Mahasiswa): number {
