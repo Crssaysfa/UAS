@@ -38,11 +38,6 @@ const daftarMahasiswa: Mahasiswa[] = [
 // Penghitung id untuk data baru (pakai let karena nilainya berubah)
 let idBerikutnya: number = 6;
 
-// FILE ANGGOTA 2 (sudah diperbaiki)
-// Bagian 1 ditempel menggantikan baris placeholder [DIISI ANGGOTA 2 - BAGIAN 1]
-// Bagian 2 ditempel menggantikan baris placeholder [DIISI ANGGOTA 2 - BAGIAN 2]
-
-// ########## BAGIAN 1 (mulai) ##########
 // ---------- BLOK 4: FUNGSI MENU DAN INPUT ANGKA ----------
 // Fungsi tanpa parameter dan tanpa return (void): menampilkan menu utama
 function tampilkanMenu(): void {
@@ -76,9 +71,7 @@ function tanyaAngka(pertanyaan: string, min: number, max: number, bulat: boolean
         }
     }
 }
-// ########## BAGIAN 1 (selesai) ##########
 
-// ########## BAGIAN 2 (mulai) ##########
 // ---------- PROGRAM UTAMA (MENU BERULANG) ----------
 // Percobaan Progress 2: menampilkan contoh data supaya fungsi di atas terlihat bekerja
 console.log("Contoh data pertama:");
@@ -125,7 +118,6 @@ do {
             break;
     }
 } while (pilihan !== "0");
-// ########## BAGIAN 2 (selesai) ##########
 
 // Menghitung nilai akhir berdasarkan bobot tugas, UTS, dan UAS
 function nilaiAkhirMhs(mhs: Mahasiswa): number {
