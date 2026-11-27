@@ -49,9 +49,49 @@ let idBerikutnya: number = 6;
 
 // ============================================================
 // >>> BAGIAN ANGGOTA 3: fungsi perhitungan
-// >>> Ganti baris [DIISI ANGGOTA 3] di bawah dengan kode dari file yang sesuai
 // ============================================================
-// [DIISI ANGGOTA 3]
+
+// Menghitung nilai akhir berdasarkan bobot tugas, UTS, dan UAS
+function nilaiAkhirMhs(mhs: Mahasiswa): number {
+    const hasil: number =
+        (mhs.nilaiTugas * BOBOT_TUGAS +
+            mhs.nilaiUTS * BOBOT_UTS +
+            mhs.nilaiUAS * BOBOT_UAS) / 100;
+    return Math.round(hasil * 100) / 100;   // bulatkan 2 angka di belakang koma
+}
+
+// Menghitung persen kehadiran dari jumlah pertemuan yang dihadiri
+function hitungPersenHadir(hadir: number): number {
+    const persen: number = (hadir / TOTAL_PERTEMUAN) * 100;
+    return Math.round(persen * 10) / 10;    // bulatkan 1 angka di belakang koma
+}
+
+// Mengubah nilai akhir menjadi huruf mutu
+function hurufMhs(mhs: Mahasiswa): string {
+    const nilai: number = nilaiAkhirMhs(mhs);
+    if (nilai >= 85) return "A";
+    if (nilai >= 70) return "B";
+    if (nilai >= 60) return "C";
+    if (nilai >= 50) return "D";
+    return "E";
+}
+
+// Menentukan predikat dari nilai akhir
+function tentukanPredikat(nilai: number): string {
+    if (nilai >= 85) return "Sangat Baik";
+    if (nilai >= 70) return "Baik";
+    if (nilai >= 60) return "Cukup";
+    return "Kurang";
+}
+
+// Menentukan status kelulusan: nilai akhir, kehadiran, dan nilai UAS harus memenuhi syarat
+function statusMhs(mhs: Mahasiswa): string {
+    const cukupNilai: boolean = nilaiAkhirMhs(mhs) >= NILAI_LULUS;
+    const cukupHadir: boolean = hitungPersenHadir(mhs.hadir) >= MIN_HADIR;
+    const cukupUAS: boolean = mhs.nilaiUAS >= MIN_NILAI_UAS;
+    return (cukupNilai && cukupHadir && cukupUAS) ? "LULUS" : "TIDAK LULUS";
+}
+
 // ============================================================
 // >>> AKHIR BAGIAN ANGGOTA 3
 // ============================================================
@@ -88,6 +128,9 @@ function tampilkanSatu(mhs: Mahasiswa): void {
 // >>> Ganti baris [DIISI ANGGOTA 2 - BAGIAN 2] di bawah dengan kode dari file yang sesuai
 // ============================================================
 // [DIISI ANGGOTA 2 - BAGIAN 2]
-// ============================================================
-// >>> AKHIR BAGIAN ANGGOTA 2 (bagian 2)
+
+// --- SEMENTARA (hapus kalau kode Anggota 2 sudah masuk): tampilkan semua data untuk tes ---
+for (const mhs of daftarMahasiswa) {
+    tampilkanSatu(mhs);
+}
 // ============================================================
